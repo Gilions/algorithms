@@ -8,6 +8,9 @@ class LinkedList:
         get - get value on index
             param:
                 index: int
+        edit - edit items list
+            params:
+                item: Any type, index: int
         insert - insert new item
             param:
                 item: Any type, index: int
@@ -84,6 +87,22 @@ class LinkedList:
                 prev_node = node
                 node = node.next_item
             prev_node.next_item = self.Node(item, next_item=node)
+
+    def edit(self, item, index):
+        # Edit items list
+        count = self.count()
+        if count == 0:
+            print(f'List is empty!')
+        if index > count:
+            print(f'Index out of range, max index = {self.count()}')
+
+        i = 0
+        node = self.head
+        while i < index:
+            i += 1
+            node = node.next_item
+        node.item = item
+        return node.item
 
     def delete(self, index):
         # Delete item
